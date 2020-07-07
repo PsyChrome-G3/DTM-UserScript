@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         DTM-G3Scripts
-// @version      1.21
+// @version      1.22
 // @description  A script to carry out crimes on DownTown Mafia
 // @author       PsyChrome-G3
-// @homepageURL  http://g3-scripts.g3cko-design.uk/
-// @supportURL   http://g3-scripts.g3cko-design.uk/
+// @homepageURL  https://github.com/PsyChrome-G3
+// @supportURL   https://github.com/PsyChrome-G3
 // @match        https://www.downtown-mafia.com/crimes
 // @require      http://code.jquery.com/jquery-3.5.1.min.js
 // @require      https://openuserjs.org/src/libs/sizzle/GM_config.js
@@ -15,11 +15,11 @@
 // @grant        GM_addStyle
 // @grant        GM_registerMenuCommand
 // @grant        GM_getResourceText
-// @resource     css http://g3cko-design.uk/g3scripts/css/g3-dtm.css
+// @resource     css https://github.com/PsyChrome-G3/UserScripts/raw/master/css/g3-dtm.css
 // @icon         https://www.downtown-mafia.com/images/favicon/favicon-32.png
 // @icon64       https://www.downtown-mafia.com/images/favicon/favicon-120.png
-// @updateURL    https://g3cko-design.uk/g3scripts/DTM-G3Scripts.user.js
-// @downloadURL  https://g3cko-design.uk/g3scripts/DTM-G3Scripts.user.js
+// @updateURL    https://github.com/PsyChrome-G3/UserScripts/raw/master/DTM-G3Scripts.user.js
+// @downloadURL  https://github.com/PsyChrome-G3/UserScripts/raw/master/DTM-G3Scripts.user.js
 // ==/UserScript==
 
 const inline_src = (<><![CDATA[
