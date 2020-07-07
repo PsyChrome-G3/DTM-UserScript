@@ -1,0 +1,80 @@
+#configId_buttons_holder { 
+    text-align: center; 
+}
+
+#configId .reset { 
+    display: none; 
+}
+
+div#configId_section_1 { 
+    padding-top: 40px; 
+}
+
+#configId .field_label { 
+    margin-bottom: 10px; 
+}
+
+#configId .config_var { 
+    padding:  5px; 
+    font-size: 1.5em; 
+    border: 1px solid #000; 
+    display: grid; 
+}
+
+#configId {
+    background-color: #1b202a; 
+    color: white; 
+    font-size: 1.5em; 
+    font-family: "FuturaPT", sans-serif; 
+    font-weight: 500; 
+    font-style: normal; 
+}
+
+#configId .saveclose_buttons { 
+    color: white; 
+    font-size: 1em; 
+    font-family: "FuturaPT", 
+    sans-serif; font-weight: 500; 
+    font-style: normal; 
+    margin: .7em; 
+    background-image: linear-gradient(#21252a, #19425a); 
+}
+
+#configId button { 
+    height: 1.65em !important; 
+    transition: all 0.4s; 
+    font-family: "FuturaPT", sans-serif; 
+    font-weight: 500; 
+    font-style: normal; 
+    border: 0; 
+    background-image: 
+    linear-gradient(#21252a, #19425a); 
+    border-bottom: 4px solid #161a23; 
+}
+
+input[type="button" i] { 
+    color: white; 
+    font-size: 0.5em; 
+    font-family: "FuturaPT", sans-serif; 
+    font-weight: 500; 
+    font-style: normal; 
+    height: 1.65em !important; 
+    transition: all 0.4s; border: 0; 
+    background-image: linear-gradient(#21252a, #19425a); 
+    border-bottom: 4px solid #161a23; 
+}
+
+#configId .section_desc {
+    background-color: rgba(0,155,200,0.556863);
+    border: 1px solid #000; 
+    color: white; 
+    font-size: 1em; 
+    font-family: "FuturaPT", sans-serif; 
+    font-weight: 500; 
+    margin: 0 0 6px; 
+}
+
+#configId .field_label, #configId .option_label { 
+    font-size: 0.4em; 
+    margin-right: 6px; 
+}
