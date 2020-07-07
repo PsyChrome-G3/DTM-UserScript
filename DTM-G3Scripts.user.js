@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name         DTM-G3Scripts
-// @version      1.2
+// @version      1.21
 // @description  A script to carry out crimes on DownTown Mafia
-// @author       Mike
+// @author       PsyChrome-G3
+// @homepageURL  http://g3-scripts.g3cko-design.uk/
+// @supportURL   http://g3-scripts.g3cko-design.uk/
 // @match        https://www.downtown-mafia.com/crimes
 // @require      http://code.jquery.com/jquery-3.5.1.min.js
 // @require      https://openuserjs.org/src/libs/sizzle/GM_config.js
