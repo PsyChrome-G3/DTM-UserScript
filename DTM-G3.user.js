@@ -18,8 +18,8 @@
 // @resource     css https://github.com/PsyChrome-G3/UserScripts/raw/master/css/g3-dtm.css
 // @icon         https://www.downtown-mafia.com/images/favicon/favicon-32.png
 // @icon64       https://www.downtown-mafia.com/images/favicon/favicon-120.png
-// @updateURL    https://github.com/PsyChrome-G3/UserScripts/raw/master/DTM-G3Scripts.user.js
-// @downloadURL  https://github.com/PsyChrome-G3/UserScripts/raw/master/DTM-G3Scripts.user.js
+// @updateURL    https://github.com/PsyChrome-G3/UserScripts/raw/master/DTM-G3.user.js
+// @downloadURL  https://github.com/PsyChrome-G3/UserScripts/raw/master/DTM-G3.user.js
 // ==/UserScript==
 
 // config settings
