@@ -35,12 +35,12 @@ Object.keys(pattern).forEach((key) => {
 });
 const windowcss = css;
 const iframecss = `
-height: 475px;
-width: 435px;
-border: 1px solid;
-border-radius: 3px;
-position: fixed;
-z-index: 9999;
+    height: 475px;
+    width: 435px;
+    border: 1px solid;
+    border-radius: 3px;
+    position: fixed;
+    z-index: 9999;
 `;
 
 GM_registerMenuCommand(`${GM_info.script.name} Settings`, () => {
