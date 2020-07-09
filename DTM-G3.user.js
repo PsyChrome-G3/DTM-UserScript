@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DTM-G3
-// @version      1.23
+// @version      1.3
 // @description  A script to carry out crimes on DownTown Mafia
 // @author       PsyChrome-G3
 // @homepageURL  https://github.com/PsyChrome-G3
@@ -35,8 +35,8 @@ Object.keys(pattern).forEach((key) => {
 });
 const windowcss = css;
 const iframecss = `
-    height: 475px;
-    width: 435px;
+    height: 580px;
+    width: 450px;
     border: 1px solid;
     border-radius: 3px;
     position: fixed;
@@ -52,11 +52,17 @@ GM_config.init({
     id: `${configId}`,
     title: `${GM_info.script.name} ${GM_info.script.version}`,
     fields: {
-        crimeMode: {
+        hidden: {
             section: ['', 'Crime Settings'],
+            type: 'hidden', // Makes this setting a series of radio elements
+            label: "<div class='instructions'><strong>Auto Mode</strong> will automaticaly select the highest crime available to commit.<br>" +
+                   "<strong>Auto-Master Mode</strong> will automaticaly select the highest crime that isn't mastered.<br>" +
+                   "<strong>Manual Mode</strong> will commit the crime you have specified below.</div><br>", // Appears next to field
+        },
+        crimeMode: {
             type: 'radio', // Makes this setting a series of radio elements
-            options: ['Auto', 'Manual'], // Possible choices
-            label: 'Crime Mode: ', // Appears next to field
+            options: ['Auto', 'Auto-Master', 'Manual'], // Possible choices
+            label: "<div>Crime Mode: </div>", // Appears next to field
             default: 'Auto' // Default value if user doesn't change it
         },
         crimeLevel: {
@@ -101,7 +107,8 @@ GM_config.init({
         '#g3ScriptCfg button { height: 1.65em !important; transition: all 0.4s; font-family: "FuturaPT", sans-serif; font-weight: 500; font-style: normal; border: 0; background-image: linear-gradient(#21252a, #19425a); border-bottom: 4px solid #161a23; }' +
         'input[type="button" i] { color: white; font-size: 0.5em; font-family: "FuturaPT", sans-serif; font-weight: 500; font-style: normal; height: 1.65em !important; transition: all 0.4s; border: 0; background-image: linear-gradient(#21252a, #19425a); border-bottom: 4px solid #161a23; }' +
         '#g3ScriptCfg .section_desc {background-color: rgba(0,155,200,0.556863);border: 1px solid #000; color: white; font-size: 1em; font-family: "FuturaPT", sans-serif; font-weight: 500; margin: 0 0 6px; }' +
-        '#g3ScriptCfg .field_label, #g3ScriptCfg .option_label { font-size: 0.4em; margin-right: 6px; }'
+        '#g3ScriptCfg .field_label, #g3ScriptCfg .option_label { font-size: 0.4em; margin-right: 6px; }' +
+        '#g3ScriptCfg .instructions { font-size: 0.75em; line-height: 2; font-weight: normal; }'
 });
 
 // Config box
@@ -109,7 +116,7 @@ const street = ".easy-crimes";
 const heists = ".medium-crimes";
 const corporate = ".hard-crimes";
 let sHC; // Select either streets, heists or corporate
-let autoCrime;
+let crimeMode;
 let crimeNumber; // Select which crime 1-8
 
 $(document).ready(function () {
@@ -122,10 +129,13 @@ $(document).ready(function () {
     }
     crimeNumber = parseInt(GM_config.get('crimeNumber'));
     if (GM_config.get('crimeMode') === 'Auto') {
-        autoCrime = true;
+        crimeMode = "auto";
         console.log("Automatic Mode: Enabled");
-    } else {
-        autoCrime = false;
+    } else if (GM_config.get('crimeMode') === 'Auto-Master') {
+        crimeMode = "complete";
+        console.log("Automatic Mode: Enabled || We are going to attempt to commit crimes until all crimes have been mastered");
+    } else if (GM_config.get('crimeMode') === 'Manual') {
+        crimeMode = "manual";
         console.log("Automatic Mode: Disabled || We are going to attempt to commit the " + crimeNumber + " crime on the " + GM_config.get('crimeLevel') + " level");
     }
 });
@@ -181,6 +191,13 @@ $(document).ready(function () { // Waits for page to finish loading
             return lastCrime;
         }
 
+        // Automatically master's all crimes
+        function autoMaster() {
+            let crimesArray = Array.from(document.querySelectorAll('.crime-container:not(.crime-container__locked) .progress-bar:not(.progress-bar__full)'));
+            let lastCrime = crimesArray[crimesArray.length - 1];
+            return lastCrime;
+        }
+
         // Selects a crime based on user inputs above
         function specCrime(crimeDiff, crimeNum) {
             const difficulty = crimeDiff;
@@ -190,32 +207,40 @@ $(document).ready(function () { // Waits for page to finish loading
             return crimeToCommit;
         }
 
+        // Sets the delay on resetting the refresh timer
+        function docLoad() {
+            $(document).ready(function () { // When document has loaded
+                setTimeout(function () {
+                    setTimeout(function () { location.reload(); }, timeLeft() * 1000);
+                }, 1500); // 1.5 seconds will elapse and Code will execute
+            });
+        }
+
         // Attempt to commit a crime
         function attemptCrime() {
-            if (autoCrime) {
-                console.log("Automatically selecting which crime to do!");
+            if (crimeMode === "auto") {
                 $(document).ready(function () { // When document has loaded
                     setTimeout(function () {
                         autoCommit().click();
-                        $(document).ready(function () { // When document has loaded
-                            setTimeout(function () {
-                                setTimeout(function () { location.reload(); }, timeLeft() * 1000);
-                            }, 1500); // 1.5 seconds will elapse and Code will execute
-                        });
-                        console.log(timeLeft());
+                        docLoad();
                     }, 1500); // 1.5 seconds will elapse and Code will execute
                 });
-            } else {
+            } else if (crimeMode === "complete") {
+                $(document).ready(function () { // When document has loaded
+                    setTimeout(function () {
+                        autoMaster().click();
+                        docLoad();
+                    }, 1500); // 1.5 seconds will elapse and Code will execute
+                });
+            } else if(crimeMode === "manual") {
                 $(document).ready(function () { // When document has loaded
                     setTimeout(function () {
                         specCrime(sHC, crimeNumber).click();
-                        $(document).ready(function () { // When document has loaded
-                            setTimeout(function () {
-                                setTimeout(function () { location.reload(); }, timeLeft() * 1000);
-                            }, 1500); // 1.5 seconds will elapse and Code will execute
-                        });
+                        docLoad();
                     }, 1500); // 1.5 seconds will elapse and Code will execute
                 });
+            } else {
+                console.log("No crime mode selected, please check settings");
             }
         }
 
