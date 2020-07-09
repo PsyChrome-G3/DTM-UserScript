@@ -22,7 +22,7 @@
 // @downloadURL  https://github.com/PsyChrome-G3/DTM-UserScript/raw/master/DTM-G3.user.js
 // ==/UserScript==
 
-// config settings
+// Config settings
 const configId = 'g3ScriptCfg';
 const iconUrl = GM_info.script.icon64;
 const pattern = {};
