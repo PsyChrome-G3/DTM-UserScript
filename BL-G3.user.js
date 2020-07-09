@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         BL-G3Scripts
-// @version      1.3.2.16
+// @name         BL-G3
+// @version      1.3.16
 // @description  Commit's crimes, rackets, auto burglary, booze runs & and when available buys bullets.
 // @author       PsyChrome-G3
-// @homepageURL  http://g3-scripts.g3cko-design.uk/
+// @homepageURL  https://github.com/PsyChrome-G3
 // @include      /^https?:\/\/(www\.)?bootleggers\.(us)\/.*/*
 // @grant        GM_addStyle
 // ==/UserScript==
@@ -11,7 +11,7 @@
 (function() {
     'use strict';
     // - - - - - - - E D I T   H E R E - - - - - - - //
-    var accountName = "Reaper";
+    var accountName = "NameHere";
     var halfTimers = false;
 
     // Set what times to travel between (e.g. 8 - 21 for 8am to 9pm).
