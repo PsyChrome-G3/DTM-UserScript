@@ -4,12 +4,12 @@ A user script that automates the game Downtown Mafia.
 
 ## Features
 
-1. Working:
+#### Working:
 
-	* Automatically commits crimes when the crime mode is set to auto. This will attempt to commit the highest available crime and move on as and when new crimes unlock.
+	* Automatically commits crimes when the crime mode is set to auto. This will attempt to commit the highest available crime.
 	* Manually commits crimes when the crime mode is set to manual. You can then specify which crime you would like to commit.
 
-2. To do:
+#### To do:
 
 	* A completionist mode that will go through and master each crime available.
 	* Jail busting module - Maybe.
