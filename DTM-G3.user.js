@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DTM-G3
-// @version      1.3.1
+// @version      1.3.2
 // @description  A script to carry out crimes on DownTown Mafia
 // @author       PsyChrome-G3
 // @homepageURL  https://github.com/PsyChrome-G3
