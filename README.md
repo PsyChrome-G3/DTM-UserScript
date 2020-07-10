@@ -37,6 +37,11 @@ The userscript is set up to automatically update. You can check for updates from
 
 ## Change Log
 
+#### <a name="v1.3.1">Version 1.3.1</a> (10-07-2020)
+
+* Improved Feature
+  * Auto-Master feature now moves to Auto Mode once all crimes have been mastered.
+
 #### <a name="v1.3.0">Version 1.3.0</a> (09-07-2020)
 
 * New feature
