@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DTM-G3
-// @version      1.3.1
+// @version      1.3.2
 // @description  A script to carry out crimes on DownTown Mafia
 // @author       PsyChrome-G3
 // @homepageURL  https://github.com/PsyChrome-G3
@@ -134,7 +134,7 @@ $(document).ready(function () {
         crimeMode = "auto";
         console.log("Automatic Mode: Enabled");
     } else if (GM_config.get('crimeMode') === 'Auto-Master') {
-        if (crimesArray.length === 0) {
+        if (crimesArray.length > 0) {
             console.log("All crimes have been mastered - Switching to Auto Mode");
             crimeMode = "auto";
         } else {
@@ -200,6 +200,7 @@ $(document).ready(function () { // Waits for page to finish loading
 
         // Automatically master's all crimes
         function autoMaster() {
+            let crimesArray = Array.from(document.querySelectorAll('.crime-container:not(.crime-container__locked) .progress-bar:not(.progress-bar__full)'));
             let lastCrime = crimesArray[crimesArray.length - 1];
             return lastCrime;
         }
