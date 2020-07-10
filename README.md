@@ -33,7 +33,7 @@ A user script that automates the game DownTown Mafia.
 	
 ## Updating
 
-Userscripts are set up to automatically update. You can check for updates from within the Greasemonkey or Tampermonkey menu, or click on the install link again to get the update.
+The userscript is set up to automatically update. You can check for updates from within the Greasemonkey or Tampermonkey menu, or click on the install link again to get the update.
 
 ## Change Log
 
