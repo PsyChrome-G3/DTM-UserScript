@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         DTM-G3
-// @version      1.3
+// @version      1.3.1
 // @description  A script to carry out crimes on DownTown Mafia
 // @author       PsyChrome-G3
 // @homepageURL  https://github.com/PsyChrome-G3
@@ -119,6 +119,8 @@ let sHC; // Select either streets, heists or corporate
 let crimeMode;
 let crimeNumber; // Select which crime 1-8
 
+let crimesArray = Array.from(document.querySelectorAll('.crime-container:not(.crime-container__locked) .progress-bar:not(.progress-bar__full)'));
+
 $(document).ready(function () {
     if (GM_config.get('crimeLevel') === 'Street') {
         sHC = street;
@@ -132,8 +134,13 @@ $(document).ready(function () {
         crimeMode = "auto";
         console.log("Automatic Mode: Enabled");
     } else if (GM_config.get('crimeMode') === 'Auto-Master') {
-        crimeMode = "complete";
-        console.log("Automatic Mode: Enabled || We are going to attempt to commit crimes until all crimes have been mastered");
+        if (crimesArray.length === 0) {
+            console.log("All crimes have been mastered - Switching to Auto Mode");
+            crimeMode = "auto";
+        } else {
+            crimeMode = "complete";
+            console.log("Automatic Mode: Enabled || We are going to attempt to commit crimes until all crimes have been mastered");
+        }
     } else if (GM_config.get('crimeMode') === 'Manual') {
         crimeMode = "manual";
         console.log("Automatic Mode: Disabled || We are going to attempt to commit the " + crimeNumber + " crime on the " + GM_config.get('crimeLevel') + " level");
@@ -193,7 +200,6 @@ $(document).ready(function () { // Waits for page to finish loading
 
         // Automatically master's all crimes
         function autoMaster() {
-            let crimesArray = Array.from(document.querySelectorAll('.crime-container:not(.crime-container__locked) .progress-bar:not(.progress-bar__full)'));
             let lastCrime = crimesArray[crimesArray.length - 1];
             return lastCrime;
         }
